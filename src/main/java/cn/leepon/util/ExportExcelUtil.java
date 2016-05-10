@@ -23,10 +23,10 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
+
 /**
- * 利用开源组件POI3.0.2动态导出EXCEL文档 转载时请保留以下信息，注明出处！
+ * 利用开源组件POI3.0.2动态导出EXCEL文档
  * 
- * @author leno
  * @version v1.0
  * @param <T>
  *            应用泛型，代表任意一个符合javabean风格的类
@@ -99,7 +99,7 @@ public class ExportExcelUtil<T> {
 		comment.setAuthor("leno");
 		// 产生表格标题行
 		HSSFRow row = sheet.createRow(0);
-		for (int i = 0; i < headers.length; i++) {
+		for (int i = 0,len =headers.length ; i < len ; i++) {
 			HSSFCell cell = row.createCell(i);
 			cell.setCellStyle(style);
 			HSSFRichTextString text = new HSSFRichTextString(headers[i]);
@@ -114,7 +114,7 @@ public class ExportExcelUtil<T> {
 			T t = (T) it.next();
 			// 利用反射，根据javabean属性的先后顺序，动态调用getXxx()方法得到属性值
 			Field[] fields = t.getClass().getDeclaredFields();
-			for (int i = 0; i < fields.length; i++) {
+			for (int i = 0,len =fields.length ; i < len; i++) {
 				HSSFCell cell = row.createCell(i);
 				cell.setCellStyle(style2);
 				Field field = fields[i];
