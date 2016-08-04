@@ -202,5 +202,10 @@ public class ExportExcelUtil<T> {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void main(String[] args) {
+		
+		
+	}
 
 }
