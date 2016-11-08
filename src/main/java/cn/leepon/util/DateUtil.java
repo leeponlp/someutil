@@ -191,7 +191,26 @@ public class DateUtil {
 		long t1 = c.getTime().getTime();
 		return (int) (t / 1000 - t1 / 1000) / 3600 / 24;
 	}
-	
+	/**
+	 * 按用户格式字符串距离今天的天数
+	 * 
+	 * @param date
+	 *            日期字符串
+	 * @param format
+	 *            日期格式
+	 * @return
+	 */
+	public static int countDaysBetween2DiffDate(String date1, String date2) {
+		Calendar c1 = Calendar.getInstance();
+		c1.setTime(parse(date1));
+		long t1 = c1.getTime().getTime();
+		Calendar c2 = Calendar.getInstance();
+		c2.setTime(parse(date2));
+		long t2 = c2.getTime().getTime();
+		return Math.abs((int) (t1 / 1000 - t2 / 1000) / 3600 / 24);
+	}
+
+		
 	/**
 	 * 将日期格式的字符串转换为长整型
 	 * 
@@ -525,13 +544,16 @@ public class DateUtil {
     //=========================================================================
     
 	public static void main(String[] args) {
-		long currentTimeMillis = System.currentTimeMillis();
-		boolean b = isSameDayOfMillis(currentTimeMillis, currentTimeMillis+3);
-		System.err.println(b);
+		//long currentTimeMillis = System.currentTimeMillis();
+		//boolean b = isSameDayOfMillis(currentTimeMillis, currentTimeMillis+3);
+		//System.err.println(b);
 //		System.err.println(getToday(null));
 //		String day = getLastDayOfMonth(new Date(), null);
 //		System.err.println(day);
 		//System.err.println(getLastMonFirstDay());
+		
+		int i = countDaysBetween2DiffDate("2016-09-10", "2016-09-20");
+		System.err.println(i);
 	}
 
 }

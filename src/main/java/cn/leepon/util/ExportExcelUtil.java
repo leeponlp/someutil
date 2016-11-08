@@ -1,9 +1,7 @@
 package cn.leepon.util;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
@@ -50,7 +48,7 @@ public class ExportExcelUtil<T> {
 	 * @param pattern
 	 *            如果有时间数据，设定输出格式。默认为"yyy-MM-dd"
 	 */
-	public void exportExcel(String title, String[] headers, Collection<T> dataset, OutputStream out) {
+	public HSSFWorkbook exportExcel(String title, String[] headers, Collection<T> dataset, OutputStream out) {
 		// 声明一个工作薄
 		HSSFWorkbook workbook = new HSSFWorkbook();
 		// 生成一个表格
@@ -181,31 +179,15 @@ public class ExportExcelUtil<T> {
 							cell.setCellValue(richString);
 						}
 					}
-				} catch (SecurityException e) {
-					e.printStackTrace();
-				} catch (NoSuchMethodException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
 					// 清理资源
 				}
 			}
 		}
-		try {
-			workbook.write(out);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		return workbook;
 	}
 	
-	public static void main(String[] args) {
-		
-		
-	}
-
 }

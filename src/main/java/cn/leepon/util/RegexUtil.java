@@ -128,6 +128,16 @@ public class RegexUtil {
 	}
 	
 	/**
+	 * 截取数字【1-9】部分
+	 * @param str
+	 * @return
+	 */
+	public static String getIntegerPositiveNum(String str){
+		return RegexUtil.init(str, "[1-9]+\\d+").get(0);
+	}
+
+	
+	/**
 	 * 判断一个字符串是否都为数字
 	 * @param str
 	 * @return
@@ -251,5 +261,9 @@ public class RegexUtil {
 	 public static String filterStr(String str){
 		 return RegexUtil.init(str, Validation.STR_SPECIAL).replaceAll("").trim();
 	 }
-	 
+	 public static void main(String[] args) {
+		String str = "010";
+		String num = RegexUtil.getIntegerPositiveNum(str);
+		System.err.println(num);
+	}
 }

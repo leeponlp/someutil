@@ -7,8 +7,11 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.junit.Test;
 
+import cn.leepon.util.HttpClientUtil;
 import cn.leepon.util.ResourceUtil;
 
 
@@ -57,6 +60,22 @@ public class TestCase {
 		Object[] objs = new Object[]{"leepon","平安好房"};
 		String value = ResourceUtil.getValue("config", "100", objs);
 		System.err.println(value);
+	}
+	
+	@Test
+	public void demo4(){
+		
+		String url = "http://139.129.43.139:8000/v1.0/hospital/doctor/list";
+		List<NameValuePair> list = new ArrayList<>();
+		list.add(new BasicNameValuePair("token", "644D48B0706344419EC2720E5A364DFE"));
+		list.add(new BasicNameValuePair("hospitalId", "9910007"));
+		list.add(new BasicNameValuePair("deptCode", "24"));
+		list.add(new BasicNameValuePair("doctorCode", "2912"));
+		list.add(new BasicNameValuePair("clinicDates", "2016-09-29"));
+		list.add(new BasicNameValuePair("scheduleFlag", "1"));
+		String executeByPOST = HttpClientUtil.executeByPOST(url, list);
+		System.err.println(executeByPOST);
+		
 	}
 		
 
