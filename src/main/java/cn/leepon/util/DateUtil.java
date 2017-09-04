@@ -554,6 +554,7 @@ public class DateUtil {
 		
 		int i = countDaysBetween2DiffDate("2016-09-10", "2016-09-20");
 		System.err.println(i);
+		format(new Date(),FORMAT_LONG);
 	}
 
 }

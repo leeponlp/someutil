@@ -128,7 +128,7 @@ public class RegexUtil {
 	}
 	
 	/**
-	 * 截取数字【1-9】部分
+	 * 截取数字非0开头的数字部分
 	 * @param str
 	 * @return
 	 */

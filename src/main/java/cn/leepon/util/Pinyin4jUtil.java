@@ -564,6 +564,12 @@ public class Pinyin4jUtil {
         
         pinyin = Pinyin4jUtil.chineseToPinyin(str);
         System.err.println(pinyin);
+        
+        pinyin = Pinyin4jUtil.getCnASCII("ABCD");
+        System.err.println("ABCD的ASCII: "+pinyin); 
+        
+        pinyin = Pinyin4jUtil.getCnASCII("aBcd");
+        System.err.println("aBcd的ASCII: "+pinyin); 
 	}
 
 }
